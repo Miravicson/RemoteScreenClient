@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { ListGroup, ListGroupItem } from 'reactstrap'
 import { connect } from 'react-redux'
 import { getUpdates, deleteUpdate } from '../actions/updateAction'
 
