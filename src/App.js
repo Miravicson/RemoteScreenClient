@@ -1,28 +1,39 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import store from './store'
+import './App.css'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Header from './header'
+import Locations from './pages/Location/Locations'
+import States from './pages/States'
+import Updates from './pages/Updates';
+
+const Home = () => (
+  <div className="App">
+    <h1>Welcome Home</h1>
+  </div>
+)
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <Provider store={store}>
+        <Router>
+          <div>
+            <Header />
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/location" component={Locations} />
+                <Route exact path="/update" component={Updates} />
+                <Route exact path="/state" component={States} />
+              </Switch>
+            </div>
+          </div>
+        </Router>
+      </Provider>
+    )
   }
 }
 
-export default App;
+export default App

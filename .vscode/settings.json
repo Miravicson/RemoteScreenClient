@@ -1,0 +1,23 @@
+{
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "prettier.singleQuote": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "explorer.confirmDelete": false,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx",
+        // "javascript": "html"
+    },
+    "editor.formatOnPaste": true,
+    "files.associations": {
+        "*.js": "javascriptreact"
+    },
+    "prettier.trailingComma": "es5",
+    "prettier.semi": false,
+    "eslint.enable": false,
+    "prettier.tabWidth": 2
+}

@@ -1,0 +1,8 @@
+export const GET_STATES = 'GET_STATES'
+export const GET_LGAS = 'GET_LGAS'
+export const GET_LOCATIONS = 'GET_LOCATIONS'
+export const ADD_LOCATION = 'ADD_LOCATION'
+export const DELETE_LOCATION = 'DELETE_LOCATION'
+export const ADD_UPDATE = 'ADD_UPDATE'
+export const GET_UPDATES = 'GET_UPDATES'
+export const DELETE_UPDATE = 'GET_UPDATE'
