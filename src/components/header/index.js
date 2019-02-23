@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './styles/_header.scss'
 
 import {
     Collapse,

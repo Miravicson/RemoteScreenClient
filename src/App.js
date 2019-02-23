@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import store from './store'
-import './App.css'
+import './App.scss'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Header from './header'
+import Header from './components/header/'
+import Footer from './components/footer'
 import Locations from './pages/Location/Locations'
 import States from './pages/States'
 import Updates from './pages/Updates';
@@ -29,6 +30,7 @@ class App extends Component {
                 <Route exact path="/state" component={States} />
               </Switch>
             </div>
+            <Footer/>
           </div>
         </Router>
       </Provider>

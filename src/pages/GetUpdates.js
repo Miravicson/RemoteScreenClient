@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getUpdates, deleteUpdate } from '../actions/updateAction'
 
+
 class GetUpdates extends Component {
   constructor() {
     super()
@@ -20,23 +21,23 @@ class GetUpdates extends Component {
   render() {
     const { updates } = this.props
     return (
-      <div>
+      <div id='Updates'>
         {updates ? (
-          <div>
+          <div className="card px-2 py-2">
             {updates.map(update => (
               <ul class="list-group list-group-horizontal-sm" key={update.id}>
                 <li class="list-group-item">{update.title}</li>
                 <li class="list-group-item">PMS price:{update.PMS}</li>
                 <li class="list-group-item">DPK price: {update.DPK}</li>
                 <li class="list-group-item">AGO price: {update.AGO}</li>
-                <span className="float-right">
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={this.handleDelete.bind(this, update.id)}
-                  >
-                    <small>delete</small>
-                  </button>
-                </span>
+
+                <button
+                  className="btn btn-sm mt-2"
+                  onClick={this.handleDelete.bind(this, update.id)}
+                  id="delete"
+                >
+                  <small>delete</small>
+                </button>
               </ul>
             ))}
           </div>

@@ -4,5 +4,11 @@ $primary : #00A1F1;
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
+@import './var.scss';
+@import '../components/header/header.scss';
+@import '../components/sidebar/sidebar.scss';
+@import '../components/layout/layout.scss';
+@import '../components/footer/footer.scss';
+@import '../pages/updates.scss';
 
 
