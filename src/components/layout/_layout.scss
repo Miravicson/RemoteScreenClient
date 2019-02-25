@@ -1,0 +1,22 @@
+.container {
+  min-height: 83vh;
+  width: 90vw;
+  margin: auto;
+  margin-top: 4rem;
+  padding-top: 1rem;
+}
+
+.contract {
+  width: calc(100vw - 14rem);
+  margin-left: 12rem;
+  margin-right: 2rem;
+
+}
+
+@media (max-width: 40rem){
+  .container, .contract {
+    width: 95vw;
+    margin: auto;
+    margin-top: 4rem;
+  }
+}

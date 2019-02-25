@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { ListGroup, ListGroupItem } from 'reactstrap'
 import { connect } from 'react-redux'
 import { getLocations, deleteLocation } from '../../actions/locationActions'
 
@@ -27,9 +26,9 @@ class GetLocations extends Component {
     return (
       <div>
         {locations ? (
-          <ListGroup>
+          <ul>
             {locations.map(location => (
-              <ListGroupItem key={location.id}>
+              <li key={location.id}>
                 {location.name}{' '}
                 <span className="float-right">
                   <button
@@ -39,9 +38,9 @@ class GetLocations extends Component {
                     <small>delete</small>
                   </button>
                 </span>
-              </ListGroupItem>
+              </li>
             ))}
-          </ListGroup>
+          </ul>
         ) : (
           <h2>Loading locations ...</h2>
         )}

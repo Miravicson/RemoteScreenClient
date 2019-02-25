@@ -1,11 +1,22 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import classnames from 'classnames'
 
-const Layout = ({children}) => {
+
+const Layout = props => {
+  const { active } = props
+  console.log(active)
   return (
-    <div>
-      {children}
+    <div className={classnames('container', { 'contract': active })}>
+      {props.children}
     </div>
   )
 }
 
-export default Layout
+const mapStateToProps = state => ({
+  active: state.sidebar.active,
+})
+export default connect(
+  mapStateToProps,
+  null
+)(Layout)

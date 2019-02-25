@@ -1,55 +1,82 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import avatar from '../../images/avatar.svg'
+import { connect } from 'react-redux'
+import classnames from 'classnames'
+import { toggleSidebar } from '../../actions/sidebarAction'
 
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-} from 'reactstrap';
+class Header extends Component {
+  constructor(props) {
+    super(props)
 
-export default class Header extends Component {
-    constructor() {
-        super();
-        this.state = {
-            collapsed: true
-        };
-        this.toggleNavbar = this.toggleNavbar.bind(this);
+    this.state = {
+      dropdown: false,
     }
-    toggleNavbar() {
-        this.setState({
-            collapsed: !this.state.collapsed
-        });
-    }
-    render() {
-        return (
-            <div>
-                <Navbar color="primary" dark expand="md" className="mb-5 navbar-element">
-                    <NavbarBrand href="/">RemoteScreen</NavbarBrand>
-                    <NavbarToggler onClick={this.toggleNavbar} />
-                    <Collapse isOpen={!this.state.collapsed} navbar>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <NavLink href="/location">
-                                    Location
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="/update">
-                                    Updates
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="/state">
-                                    State
-                                </NavLink>
-                            </NavItem>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-            </div>
-        );
-    }
+  }
+
+  togglerFunction = () => {
+    this.props.toggleSidebar()
+  }
+
+  dropdown = () => {
+    this.setState(prevState => ({
+      dropdown: !prevState.dropdown,
+    }))
+  }
+
+  render() {
+    const { active } = this.props
+    const { dropdown } = this.state
+
+    return (
+      <nav className="navbar">
+        <div className="brand-toggler">
+          <div
+            className={classnames('toggler', { change: active })}
+            onClick={this.togglerFunction}
+          >
+            <div className="bar1" />
+            <div className="bar2" />
+            <div className="bar3" />
+          </div>
+          <Link exact="true" to="/" className="brand-toggler-brand">
+            RemoteScreen
+          </Link>
+        </div>
+        <div className="nav">
+          <i className="fa fa-envelope" aria-hidden="true" />
+          <i className="fa fa-bell" aria-hidden="true" />
+          <img src={avatar} alt="" />
+          <p>Victor Ughonu</p>
+          <button>
+            <i className="fa fa-angle-down" aria-hidden="true" />
+          </button>
+        </div>
+        <div className="mobile-nav">
+          <img src={avatar} alt="" />
+          <button onClick={this.dropdown}>
+            <i className="fa fa-angle-down" aria-hidden="true" />
+          </button>
+          <div
+            className={classnames('profile-dropdown', {
+              show: dropdown,
+            })}
+          >
+            <p>Victor Ughonu</p>
+            <i className="fa fa-envelope" aria-hidden="true" />
+            <i className="fa fa-bell" aria-hidden="true" />
+          </div>
+        </div>
+      </nav>
+    )
+  }
 }
+
+const mapStateToProps = state => ({
+  active: state.sidebar.active,
+})
+
+export default connect(
+  mapStateToProps,
+  { toggleSidebar }
+)(Header)

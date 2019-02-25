@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Input, FormFeedback } from 'reactstrap'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 
@@ -17,7 +16,7 @@ class CreateLocation extends Component {
       state: '',
       location: '',
       ready: false,
-      errors: {}
+      errors: {},
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -32,9 +31,7 @@ class CreateLocation extends Component {
   handleSubmit(e) {
     e.preventDefault()
     this.makePost()
-
   }
-
 
   componentDidMount() {
     this.props.getStates()
@@ -44,7 +41,7 @@ class CreateLocation extends Component {
 
   makePost() {
     const { location, lga, state } = this.state
-    
+
     if (location === '') {
       this.setState({ errors: { location: 'Location is required' } })
       return
@@ -61,7 +58,7 @@ class CreateLocation extends Component {
 
     const payload = {
       name: this.state.location,
-      lga_id: this.state.lga
+      lga_id: this.state.lga,
     }
     this.props.addLocation(payload)
     this.setState({
@@ -74,7 +71,7 @@ class CreateLocation extends Component {
 
   render() {
     const { location, lga, state, ready, errors } = this.state
-    const { lgas, states} = this.props
+    const { lgas, states } = this.props
     let options = null
 
     if (state) {
@@ -88,113 +85,74 @@ class CreateLocation extends Component {
 
     return (
       <div>
-        <div className="container">
-          <div className="row">
-            {ready ? (
-              <div className="col-sm-12 col-md-8 mx-auto">
-                <h2 className="text-center">Add Location</h2>
-                <Form onSubmit={this.handleSubmit}>
-                  <FormGroup>
-                    <Input
-                      type="text"
-                      name="location"
-                      id="location"
-                      placeholder="Enter Location"
-                      onChange={this.handleChange}
-                      value={location}
-                      className={classnames({'is-invalid': errors.location})}
-                    />
-                    {errors.location && <FormFeedback>{errors.location}</FormFeedback>}
-                  </FormGroup>
-                  <FormGroup>
-                    <select
-                      className={classnames('form-control', {'is-invalid': errors.state})}
-                      type="select"
-                      name="state"
-                      id="state"
-                      value={state}
-                      onChange={this.handleChange}
-                    >
-                      <option value="" default disabled>
-                        Select State
-                      </option>
-                      {states.map((state, key) => (
-                        <option value={state.id} key={key}>
-                          {state.name}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.state && <FormFeedback>{errors.state}</FormFeedback>}
-                  </FormGroup>
-                  <FormGroup>
-                    <select
-                      className={classnames('form-control', {'is-invalid': errors.lga})}
-                      type="select"
-                      name="lga"
-                      id="lga"
-                      value={lga}
-                      onChange={this.handleChange}
-                    >
-                      <option value="" default disabled>
-                        Select Local Government Area
-                      </option>
+        {ready ? (
+          <form onSubmit={this.handleSubmit} className="form">
+            <h2 className="form-title">Add Location</h2>
+            <div className="form-group">
+              <label htmlFor="location">
+                Location Address &nbsp;<sup>*</sup>
+              </label>
+              <input
+                type="text"
+                name="location"
+                id="location"
+                placeholder="Enter Location"
+                onChange={this.handleChange}
+                value={location}
+                className={classnames('form-control', {
+                  'is-invalid': errors.location,
+                })}
+              />
+              {errors.location && (
+                <div className="is-invalid">{errors.location}</div>
+              )}
+            </div>
+            <div className="form-group">
+              <select
+                className={classnames('form-control', {
+                  'is-invalid': errors.state,
+                })}
+                type="select"
+                name="state"
+                id="state"
+                value={state}
+                onChange={this.handleChange}
+              >
+                <option value="" default disabled>
+                  Select State
+                </option>
+                {states.map((state, key) => (
+                  <option value={state.id} key={key}>
+                    {state.name}
+                  </option>
+                ))}
+              </select>
+              {errors.state && <div>{errors.state}</div>}
+            </div>
+            <div className="form-group">
+              <select
+                className={classnames('form-control', {
+                  'is-invalid': errors.lga,
+                })}
+                type="select"
+                name="lga"
+                id="lga"
+                value={lga}
+                onChange={this.handleChange}
+              >
+                <option value="" default disabled>
+                  Select Local Government Area
+                </option>
 
-                      {options}
-                    </select>
-                    {errors.lga && <FormFeedback>{errors.lga}</FormFeedback>}
-                  </FormGroup>
-                  <Button color="primary">Register Location</Button>
-                </Form>
-              </div>
-            ) : (
-              <div className="col-sm-12 col-md-8 mx-auto">
-                <h2 className="text-center">Add Location</h2>
-                <Form>
-                  <FormGroup>
-                    <Input
-                      type="text"
-                      name="location"
-                      id="location"
-                      placeholder="Loading"
-                      onChange={this.handleChange}
-                      value=""
-                      disabled
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <select
-                      className="form-control"
-                      type="select"
-                      name="state"
-                      id="state"
-                      value="Loading"
-                      onChange={this.handleChange}
-                    >
-                      <option value="Loading" default disabled>
-                        Loading
-                      </option>
-                    </select>
-                  </FormGroup>
-                  <FormGroup>
-                    <select
-                      className="form-control"
-                      type="select"
-                      name="lga"
-                      id="lga"
-                      value="Loading"
-                      onChange={this.handleChange}
-                    >
-                      <option value="Loading" default disabled>
-                        Loading
-                      </option>
-                    </select>
-                  </FormGroup>
-                  <Button color="primary">Register Location</Button>
-                </Form>
-              </div>
-            )}
-          </div>
-        </div>
+                {options}
+              </select>
+              {errors.lga && <div>{errors.lga}</div>}
+            </div>
+            <button color="primary">Register Location</button>
+          </form>
+        ) : (
+          <h2 className="text-center">Add Location</h2>
+        )}
       </div>
     )
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getUpdates, deleteUpdate } from '../actions/updateAction'
+import { getUpdates, deleteUpdate } from '../../actions/updateAction'
 
 
 class GetUpdates extends Component {

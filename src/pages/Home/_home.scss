@@ -1,0 +1,12 @@
+.page-title {
+  margin: 0 1rem;
+  color: $color-dark;
+  font-family: 'Roboto',
+  sans-serif;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

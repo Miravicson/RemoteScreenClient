@@ -1,0 +1,47 @@
+.summary {
+  min-width: 25%;
+  padding: 15px;
+
+  &-card {
+    background-color: $color-light;
+    min-height: 120px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 9px $dark-gray;
+    padding: 40px;
+    color: $color-red;
+
+
+    &-icon {}
+
+    &-info {
+      color: inherit;
+      font-size: 1.7rem;
+      font-weight: bold;
+      line-height: 5px;
+      margin: 0;
+    }
+
+    &-desc {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      padding: 5px;
+      color: $color-dark;
+    }
+
+    progress {
+      color: $color-red;
+    }
+
+  }
+}
+
+
+@media (max-width: 40rem) {
+  .summary {
+    min-width: 100%;
+    padding: 5px 15px;
+
+    &-card {}
+  }
+}

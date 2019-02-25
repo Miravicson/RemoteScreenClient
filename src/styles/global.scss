@@ -1,14 +1,36 @@
 $primary : #00A1F1;
 
+html {
+  box-sizing: border-box;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
 
 
-// Import Bootstrap and its default variables
-@import '~bootstrap/scss/bootstrap.scss';
-@import './var.scss';
-@import '../components/header/header.scss';
-@import '../components/sidebar/sidebar.scss';
-@import '../components/layout/layout.scss';
-@import '../components/footer/footer.scss';
-@import '../pages/updates.scss';
+  @import './var.scss';
+  @import '../components/header/header.scss';
+  @import '../components/sidebar/sidebar.scss';
+  @import '../components/layout/layout.scss';
+  @import '../components/footer/footer.scss';
+  @import '../components/summaryCard/summaryCard.scss';
+  @import '../components/form/form.scss';
+
+  @import '../pages/Update/updates.scss';
+  @import '../pages/Home/home.scss';
 
 
+
+  body {
+    font-family: 'Roboto',
+      sans-serif;
+    font-weight: 100;
+    font-family: 'Montserrat', sans-serif;
+    font-size: $body-font-size;
+    background-color: $light-gray;
+    margin: 0;
+    padding: 0;
+  }
+}

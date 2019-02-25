@@ -1,0 +1,53 @@
+.sidebar{
+  height: 100vh;
+  position: fixed;
+  padding-top: 15vh;
+  margin:0;
+  top: 0;
+  opacity: 0;
+  transform: translateX(-12rem);
+  width: 12rem;
+  background-color: $color-light;
+  z-index: 9;
+  box-shadow: 3px 0px 9px $dark-gray;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform ease-out 0.5s, opacity ease-out 0.5s;
+
+  &-links {
+    list-style: none;
+    margin: 0;
+
+    h3, hr {
+      color: $color-blue;
+    }
+
+  }
+  &-item {
+    display: block;
+    margin: 1rem 0;
+
+
+  }
+  &-link {
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    color: black;
+    font-size: 0.9rem;
+  }
+  &-link:hover, &-link:focus {
+    color: $color-blue;
+  }
+  
+
+}
+
+.open {
+  transform: translateX(0);
+  opacity: 100;
+  transition: transform ease-in 0.5s, opacity ease-in 0.5s;
+  left:0;
+
+}
