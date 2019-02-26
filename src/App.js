@@ -41,8 +41,6 @@ class App extends Component {
               <Route exact path="/state" component={States} />
               <Route exact path="/create" component={Actions} />
             </Switch>
-
-            <Footer />
           </div>
         </Router>
       </Provider>
