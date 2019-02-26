@@ -17,9 +17,6 @@ const SideBar = (props) => {
         <li className="sidebar-item">
           <Link className="sidebar-link"to="/update">Updates</Link>
         </li>
-        {/* <li className="sidebar-item">
-          <Link className="sidebar-link"to="/state">States</Link>
-        </li> */}
       </ul>
       <ul className='sidebar-links'>
         <h3>Analytics</h3>

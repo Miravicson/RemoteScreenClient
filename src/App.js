@@ -22,9 +22,7 @@ class App extends Component {
     }
   }
 
-  componentDidUpdate() {
-    console.log(this.state.sidebarState)
-  }
+
 
   render() {
     return (

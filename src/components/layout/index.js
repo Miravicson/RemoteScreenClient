@@ -5,7 +5,6 @@ import classnames from 'classnames'
 
 const Layout = props => {
   const { active } = props
-  console.log(active)
   return (
     <div className={classnames('container', { 'contract': active })}>
       {props.children}

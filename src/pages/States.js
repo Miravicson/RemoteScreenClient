@@ -17,7 +17,6 @@ class States extends Component {
 
   render() {
     const { states } = this.props
-    console.log(states)
     return (
       <Layout>
         {states ? (
