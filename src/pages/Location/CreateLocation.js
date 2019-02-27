@@ -10,9 +10,7 @@ class CreateLocation extends Component {
   constructor() {
     super()
     this.state = {
-      lgas: null,
       lga: '',
-      states: 0,
       state: '',
       location: '',
       ready: false,

@@ -6,7 +6,10 @@ export default class Updates extends Component {
   render() {
     return (
       <Layout>
-        <h1>Updates List</h1>
+        <div>
+          <h1 className="page-title">Updates Details</h1>
+        </div>
+        <hr/>
         <GetUpdates />
       </Layout>
     )

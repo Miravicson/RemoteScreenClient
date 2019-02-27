@@ -3,7 +3,7 @@
   position: fixed;
   background: $color-light;
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid $dark-gray;
+  border-bottom: 1px solid $color-blue;
   top: 0;
   left: 0;
   width: 100%;
@@ -45,7 +45,7 @@
 
     &-brand {
       text-decoration: none;
-      color: $color-dark;
+      color: $color-blue;
       font-size: 1rem;
       font-weight: bold;
       margin-left: 1rem;

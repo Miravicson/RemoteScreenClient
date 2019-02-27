@@ -3,13 +3,13 @@ import { Provider } from 'react-redux'
 import store from './store'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './components/header/'
-import Footer from './components/footer'
 import Locations from './pages/Location/Locations'
 import States from './pages/States'
 import Actions from './pages/Actions'
 import Updates from './pages/Update/Updates'
 import SideBar from './components/sidebar'
 import Home from './pages/Home'
+
 
 
 
