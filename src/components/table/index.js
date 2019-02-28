@@ -23,6 +23,7 @@ const actionsStyles = theme => ({
   },
 })
 
+
 class TablePaginationActions extends Component {
   handleFirstPageButtonClick = event => {
     this.props.onChangePage(event, 0)
@@ -104,8 +105,10 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, {
 
 const styles = theme => ({
   root: {
-    width: '100%',
+    width: '80%',
     marginTop: theme.spacing.unit * 3,
+    // display: 'flex',
+    alignItems: 'center'
   },
   table: {
     minWidth: 500,
@@ -136,7 +139,6 @@ class TableComponent extends Component {
   render() {
     const { classes, rows } = this.props
     const { rowsPerPage, page } = this.state
-    console.log(rows);
 
     const emptyRows =
       rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
@@ -147,9 +149,10 @@ class TableComponent extends Component {
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                <TableCell>Desc</TableCell>
-                <TableCell align="right">Qty.</TableCell>
-                <TableCell align="right">Price</TableCell>
+                <TableCell>Location</TableCell>
+                <TableCell align="right">AGO</TableCell>
+                <TableCell align="right">DPK</TableCell>
+                <TableCell align="right">PMS</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -158,13 +161,12 @@ class TableComponent extends Component {
                 .map(row => (
                   <TableRow key={row.id}>
                     <TableCell component="th" scope="row">
-                      {row.name}
+                      {row.location.name}
                     </TableCell>
-                    <TableCell align="right">{row.lga_id}</TableCell>
-                    <TableCell align="right">{row.slug_name}</TableCell>
-                    {row.updates.map(update => (
-                      <TableCell>{update.DPK}</TableCell>
-                    ))}
+                    <TableCell align="right">{row.AGO}</TableCell>
+                    <TableCell align="right">{row.DPK}</TableCell>
+                    <TableCell align="right">{row.PMS}</TableCell>
+
                   </TableRow>
                 ))}
               {emptyRows > 0 && (
@@ -200,21 +202,6 @@ class TableComponent extends Component {
 TableComponent.defaultProps = {
 
   rows: [
-    { id: 5, lga_id: 483, name: 'Con Oil', slug_name: 'con-oil', updates: [] },
-    {
-      id: 6,
-      lga_id: 75,
-      name: 'Texaco filling station , Nkpor',
-      slug_name: 'texaco-filling-station-nkpor',
-      updates: [],
-    },
-    {
-      id: 7,
-      lga_id: 1,
-      name: 'Texaco filling station Ngwa Road, Aba',
-      slug_name: 'texaco-filling-station-ngwa-road-aba',
-      updates: [],
-    },
   ],
 }
 

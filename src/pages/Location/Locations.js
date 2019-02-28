@@ -4,7 +4,9 @@ import Layout from '../../components/layout/'
 import { getLgas } from '../../actions/lgaActions'
 import { getStates } from '../../actions/stateActions'
 import { getUpdates } from '../../actions/updateAction'
+import { getRecent } from '../../actions/recentActions'
 import { addLocation, getLocations } from '../../actions/locationActions'
+import {getLocationRecent} from '../../actions/mixActions'
 import TableComponent from '../../components/table'
 
 class Locations extends Component {
@@ -16,7 +18,9 @@ class Locations extends Component {
       state: '',
       location: '',
       ready: false,
-      filteredLocations: [],
+      lgas: [],
+      states: [],
+      locations: [],
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -24,22 +28,26 @@ class Locations extends Component {
   handleChange(e) {
     e.preventDefault()
     this.setState({ [e.target.name]: e.target.value })
+    if (e.target.name === 'state') {
+      this.setState({ lga: '' })
+    }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getStates()
     this.props.getLgas()
     this.props.getLocations()
     this.props.getUpdates()
-  }
+    this.props.getLocationRecent()
 
-  componentDidMount() {
     this.setState({ ready: true })
   }
 
   render() {
-    const { lga, state, ready, filteredLocations } = this.state
-    const { lgas, states } = this.props
+    const { lga, state, ready } = this.state
+    const { lgas, states, locations, updates, locationRecent } = this.props
+
+    let filteredLocations = []
 
     let lgaOptions = null
 
@@ -50,6 +58,16 @@ class Locations extends Component {
           {lga.name}
         </option>
       ))
+    }
+
+    if (lga) {
+      filteredLocations = locations.filter(
+        location => location.lga_id === Number(lga)
+      )
+      console.log(filteredLocations)
+      filteredLocations.map(location => {
+        
+      })
     }
 
     return (
@@ -118,12 +136,8 @@ const mapStateToProps = state => ({
   states: state.state.states,
   updates: state.update.updates,
   locations: state.location.locations,
+  locationRecent: state.mix.locationRecent,
 })
-
-export default connect(
-  mapStateToProps,
-  { getStates, getLgas, addLocation, getLocations, getUpdates }
-)(Locations)
 
 const styles = {
   formStyle: {
@@ -134,3 +148,8 @@ const styles = {
     },
   },
 }
+
+export default connect(
+  mapStateToProps,
+  { getStates, getLgas, addLocation, getLocations, getUpdates, getLocationRecent }
+)(Locations)
