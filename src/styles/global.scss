@@ -9,17 +9,24 @@ html {
     box-sizing: inherit;
   }
 
+  *:focus {
+    outline: none;
+  }
 
-  @import './var.scss';
-  @import '../components/header/header.scss';
-  @import '../components/sidebar/sidebar.scss';
-  @import '../components/layout/layout.scss';
-  @import '../components/footer/footer.scss';
-  @import '../components/summaryCard/summaryCard.scss';
-  @import '../components/form/form.scss';
+  @import '_var';
+  @import '_auth';
+  @import '_footer';
+  @import '_form';
+  @import '_header';
+  @import '_home';
+  @import '_layout';
+  @import '_sidebar';
+  @import '_summaryCard';
+  @import '_tab';
+  @import '_updates';
 
-  @import '../pages/Update/updates.scss';
-  @import '../pages/Home/home.scss';
+
+  
 
 
 
