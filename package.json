@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "npm": "6.8.0",
-    "node": "10.15.1"
+    "npm": "6.x.x",
+    "node": "10.x.x"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
@@ -12,8 +12,8 @@
     "ajv": "^6.8.1",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-redux": "^6.0.0",
     "react-responsive-table": "^2.0.15",
     "react-router-dom": "^4.3.1",
@@ -21,7 +21,8 @@
     "react-tabs": "^3.0.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "serve": "^10.1.2"
+    "serve": "^10.1.2",
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "start": "serve -s build",
@@ -35,16 +36,19 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
     "node-sass": "^4.11.0"
-  },
-  "resolutions": {
-    "ajv": "6.8.1"
   }
 }
